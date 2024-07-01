@@ -96,23 +96,28 @@ class MagicMask {
       if (currentChar == '\\') {
         _tags.add({_type: _fixChar, _value: mask[i + 1]});
         i++;
-      } else if (currentChar == '*') {
-        if (_lastMaskType() == _token) _tags.last[_type] = _multipleOpt;
-      } else if (currentChar == '+') {
-        if (_lastMaskType() == _token) _tags.last[_type] = _multiple;
-      } else if (currentChar == '?') {
-        if (_lastMaskType() == _token) _tags.last[_type] = _tokenOpt;
-      } else if (currentChar == '!') {
-        if (_lastMaskType() == _fixChar) _tags.last[_type] = _forcedChar;
-      } else if (currentChar == '9') {
+      }
+      // else if (currentChar == '*') {
+      //   if (_lastMaskType() == _token) _tags.last[_type] = _multipleOpt;
+      // } else if (currentChar == '+') {
+      //   if (_lastMaskType() == _token) _tags.last[_type] = _multiple;
+      // } else if (currentChar == '?') {
+      //   if (_lastMaskType() == _token) _tags.last[_type] = _tokenOpt;
+      // } else if (currentChar == '!') {
+      //   if (_lastMaskType() == _fixChar) _tags.last[_type] = _forcedChar;
+      // }
+      else if (currentChar == '9') {
         _tags.add({_type: _token, _value: '\\d'});
-      } else if (currentChar == 'A') {
+      } else if (currentChar == 'a') {
         _tags.add({_type: _token, _value: '[a-zA-z]'});
-      } else if (currentChar == 'N') {
+      } else if (currentChar == '#') {
         _tags.add({_type: _token, _value: '[a-zA-z0-9]'});
-      } else if (currentChar == 'X') {
-        _tags.add({_type: _token, _value: '.'});
-      } else {
+      }
+      // else if (currentChar == 'X') {
+      //   _tags.add({_type: _token, _value: '.'});
+      // }
+
+      else {
         _tags.add({_type: _fixChar, _value: currentChar});
       }
     }
